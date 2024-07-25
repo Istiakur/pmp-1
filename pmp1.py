@@ -1,13 +1,15 @@
-print("available functions:")
+print("Available functions:")
 print("1.Guess the Number")
-print("2.password generator")
+print("2.Password generator")
+print("3.Grade calculator")
+print("4.Trafic light meaning")
 
 run = int(input("Your answer:"))
-#guess the number
-import random
-correctnum = random.randint(1,10)
-#print(correctnum)
-if run == 1:
+
+def number_guess(): 
+    import random
+    correctnum = random.randint(1,10)
+    #print(correctnum)
     num = int(input("Your Guess:"))
     while num != correctnum:
         if num > correctnum:
@@ -17,9 +19,9 @@ if run == 1:
     else:
         print("Congratulations your number was correct")
 
-#password generator
-import string
-if run == 2:
+def password_generator():
+    import random
+    import string
     chars = ''
     length = int(input("Password length:"))
     if length <= 0:
@@ -56,9 +58,49 @@ if run == 2:
             chars += string.ascii_letters
             chars += string.punctuation
         else:
-            type  = int(input(("Error, try again:")))
+            type  = int(input(("Error, try again: ")))
         if 0 < type < 8:
             break
     password = ''.join(random.choice(chars) for _ in range(length))
-    print(password)
-    
+    print("Here is your password:" + password)
+def grade_calc():
+    marks = int(input("marks: "))
+    try:
+        marks = int(marks)
+        if(marks >=80):
+            print("A+")
+        elif(marks >=70):
+            print("A")
+        elif(marks >=60):
+            print("A-")
+        elif(marks >=50):
+            print("B")
+        elif(marks >=40):
+            print("c")
+        elif(marks >=33):
+            print("D")
+        else:
+            print("Fail")
+
+    except ValueError:
+        print("please enter a valid integer")
+def traffic_light_meaning():
+    #traffic light
+    light = input("Light color: ")
+    if(light== "red" or "Red"):
+        print("stop")
+    elif(light == "yellow" or "Yellow"):
+        print("look")
+    elif(light == "green" or "Yellow"):
+        print("go")
+    else:
+        print("light is broken")
+
+if run == 1:
+    number_guess()
+if run == 2:
+    password_generator()
+if run == 3:
+    grade_calc()
+if run == 4:
+    traffic_light_meaning()
