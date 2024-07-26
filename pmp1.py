@@ -3,14 +3,23 @@ print("1.Guess the Number")
 print("2.Password generator")
 print("3.Grade calculator")
 print("4.Trafic light meaning")
-
-run = int(input("Your answer:"))
-
+while True:
+    try:
+        run = int(input("Your answer:"))
+        break
+    except ValueError:
+        print("Please enter a valid number")
 def number_guess(): 
     import random
     correctnum = random.randint(1,10)
     #print(correctnum)
-    num = int(input("Your Guess:"))
+    while True:
+        try:
+            num = int(input("Your Guess:"))
+            break
+        except ValueError:
+            print("Please enter a valid number")
+
     while num != correctnum:
         if num > correctnum:
             num = int(input("Try a smaller number:"))
@@ -23,9 +32,15 @@ def password_generator():
     import random
     import string
     chars = ''
-    length = int(input("Password length:"))
-    if length <= 0:
-        print("Password length should be greater than zero.")
+    while True:
+        try:
+            length = int(input("Password length:"))
+            if length > 0:
+                break
+            else:
+                print("Password length should be greater than zero.")
+        except ValueError:
+            print("Please enter a valid number")
 
     type = int(input("""Choose one of the following:
     1.only digit
@@ -96,11 +111,26 @@ def traffic_light_meaning():
     else:
         print("light is broken")
 
-if run == 1:
-    number_guess()
-if run == 2:
-    password_generator()
-if run == 3:
-    grade_calc()
-if run == 4:
-    traffic_light_meaning()
+while True:
+    if run == 1:
+        number_guess()
+    if run == 2:
+        password_generator()
+    if run == 3:
+        grade_calc()
+    if run == 4:
+        traffic_light_meaning()
+
+    playagain = input("play again? (Yes/No)")
+    if playagain != "no":
+        print("Available functions:")
+        print("1.Guess the Number")
+        print("2.Password generator")
+        print("3.Grade calculator")
+        print("4.Trafic light meaning")
+
+        run = int(input("Your answer:"))
+    else:
+        break
+
+
